@@ -5,6 +5,10 @@ Up and running with React-Redux
 
 Start by understanding the difference between pure and impure functions. Pure functions are the back bone of react and redux development design. This is what guides functional programming.
 
+### React Intro
+#### ES6 Class implementation
+Just a quick review of how classes are implemented using ES6. However, it is importatnt to note that ES6 Class implementation does not provide the classic [inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)), this is simply a slightly modified prototype inheritance. None the less it makes inheritance much easier to handle.  
+
 ### MIT License
 
 Copyright (c) 2018 eugene-liyai
