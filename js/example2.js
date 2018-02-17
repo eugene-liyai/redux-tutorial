@@ -1,13 +1,15 @@
 class Score extends React.Component {
   render() {
-    <div>
-      <h2>Score board for the {this.props.teamName}</h2>
+    return(
       <div>
-        Score: 50 <br/>
-        <button>+</button>
-        <button>-</button>
+        <h2>Score board for the {this.props.teamName}</h2>
+        <div>
+          Score: 50 <br/>
+          <button>+</button>
+          <button>-</button>
+        </div>
       </div>
-    </div>
+    );
   }
 }
 
