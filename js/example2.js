@@ -6,10 +6,17 @@ class Score extends React.Component {
     }
 
     this.incrementScore = this.incrementScore.bind(this);
+    this.decrementScore = this.decrementScore.bind(this);
   }
   incrementScore() {
     this.setState({
-      score: this.state.score++,
+      score: this.state.score + 1,
+    });
+  }
+
+  decrementScore() {
+    this.setState({
+      score: this.state.score - 1,
     });
   }
   render() {
@@ -19,7 +26,7 @@ class Score extends React.Component {
         <div>
           Score: {this.state.score} <br/>
           <button onClick={this.incrementScore}>+</button>
-          <button>-</button>
+          <button onClick={this.decrementScore}>-</button>
         </div>
       </div>
     );
