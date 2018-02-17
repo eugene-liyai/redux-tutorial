@@ -1,7 +1,7 @@
 # redux-tutorial
 Up and running with React-Redux
 
-## MIT License
+### MIT License
 
 Copyright (c) 2018 eugene-liyai
 
