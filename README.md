@@ -1,6 +1,10 @@
 # redux-tutorial
 Up and running with React-Redux
 
+### Pure and Impure functions
+
+Start by understanding the difference between pure and impure functions. Pure functions are the back bone of react and redux development design. This is what guides functional programming.
+
 ### MIT License
 
 Copyright (c) 2018 eugene-liyai
