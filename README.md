@@ -1,6 +1,21 @@
 # redux-tutorial
 Up and running with React-Redux
 
+### Pure and Impure functions
+
+Start by understanding the difference between pure and impure functions. Pure functions are the back bone of react and redux development design. This is what guides functional programming.
+
+### React Intro
+#### ES6 Class implementation
+Just a quick review of how classes are implemented using ES6. However, it is importatnt to note that ES6 Class implementation does not provide the classic [inheritance](https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)), this is simply a slightly modified prototype inheritance. None the less it makes inheritance much easier to handle.  
+
+#### Run Hallo World Example
+- Clone repo
+- run `npm intall --save-dev babel-cli` on your command line
+- output executable js `node_modules/.bin/babel --plugins transform-react-jsx -o js/example1.min.js js/example1.js
+`
+- open `index.html` on desired browser
+
 ### MIT License
 
 Copyright (c) 2018 eugene-liyai
