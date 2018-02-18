@@ -20,8 +20,18 @@ Just a quick review of how classes are implemented using ES6. However, it is imp
 - run `npm intall --save-dev` on your command line
 - check port the application in running on
 
-### Why Redux
+### Redux
+A good question to ask is if redux solves your current problem.
+#### Without Redux
+- lots of state communication
+- complex error states and scenarios
+- lots of api(ajax) calls
+- confusing code, data flow doesn't scale well
 
+#### With Redux
+- clarifies data flow
+- state is predictable
+- understandable flow of the code
 
 ### MIT License
 
