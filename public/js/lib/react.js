@@ -206,7 +206,7 @@ var warning_1 = warning$1;
 function warnNoop(publicInstance, callerName) {
   {
     var constructor = publicInstance.constructor;
-    warning(false, '%s(...): Can only update a mounted or mounting component. ' + 'This usually means you called %s() on an unmounted component. ' + 'This is a no-op.\n\nPlease check the code for the %s component.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass');
+    warning(false, '%s(...): Can only update a mounted or mounting components. ' + 'This usually means you called %s() on an unmounted components. ' + 'This is a no-op.\n\nPlease check the code for the %s components.', callerName, callerName, constructor && (constructor.displayName || constructor.name) || 'ReactClass');
   }
 }
 
@@ -215,7 +215,7 @@ function warnNoop(publicInstance, callerName) {
  */
 var ReactNoopUpdateQueue = {
   /**
-   * Checks whether or not this composite component is mounted.
+   * Checks whether or not this composite components is mounted.
    * @param {ReactClass} publicInstance The instance we want to test.
    * @return {boolean} True if mounted, false otherwise.
    * @protected
@@ -230,13 +230,13 @@ var ReactNoopUpdateQueue = {
    * certainty that we are **not** in a DOM transaction.
    *
    * You may want to call this when you know that some deeper aspect of the
-   * component's state has changed but `setState` was not called.
+   * components's state has changed but `setState` was not called.
    *
    * This will not invoke `shouldComponentUpdate`, but it will invoke
    * `componentWillUpdate` and `componentDidUpdate`.
    *
    * @param {ReactClass} publicInstance The instance that should rerender.
-   * @param {?function} callback Called after component is updated.
+   * @param {?function} callback Called after components is updated.
    * @param {?string} callerName name of the calling function in the public API.
    * @internal
    */
@@ -253,7 +253,7 @@ var ReactNoopUpdateQueue = {
    *
    * @param {ReactClass} publicInstance The instance that should rerender.
    * @param {object} completeState Next state.
-   * @param {?function} callback Called after component is updated.
+   * @param {?function} callback Called after components is updated.
    * @param {?string} callerName name of the calling function in the public API.
    * @internal
    */
@@ -269,7 +269,7 @@ var ReactNoopUpdateQueue = {
    *
    * @param {ReactClass} publicInstance The instance that should rerender.
    * @param {object} partialState Next partial state to be merged with state.
-   * @param {?function} callback Called after component is updated.
+   * @param {?function} callback Called after components is updated.
    * @param {?string} Name of the calling function in the public API.
    * @internal
    */
@@ -411,7 +411,7 @@ var lowPriorityWarning = function () {};
 var lowPriorityWarning_1 = lowPriorityWarning;
 
 /**
- * Base class helpers for the updating state of a component.
+ * Base class helpers for the updating state of a components.
  */
 function ReactComponent(props, context, updater) {
   this.props = props;
@@ -438,7 +438,7 @@ ReactComponent.prototype.isReactComponent = {};
  *
  * When a function is provided to setState, it will be called at some point in
  * the future (not synchronously). It will be called with the up to date
- * component arguments (state, props, context). These values can be different
+ * components arguments (state, props, context). These values can be different
  * from this.* because your function may be called after receiveProps but before
  * shouldComponentUpdate, and this new state, props, and context will not yet be
  * assigned to this.
@@ -459,7 +459,7 @@ ReactComponent.prototype.setState = function (partialState, callback) {
  * certainty that we are **not** in a DOM transaction.
  *
  * You may want to call this when you know that some deeper aspect of the
- * component's state has changed but `setState` was not called.
+ * components's state has changed but `setState` was not called.
  *
  * This will not invoke `shouldComponentUpdate`, but it will invoke
  * `componentWillUpdate` and `componentDidUpdate`.
@@ -498,7 +498,7 @@ ReactComponent.prototype.forceUpdate = function (callback) {
 }
 
 /**
- * Base class helpers for the updating state of a component.
+ * Base class helpers for the updating state of a components.
  */
 function ReactPureComponent(props, context, updater) {
   // Duplicated from ReactComponent.
@@ -556,7 +556,7 @@ var ReactBaseClasses = {
 /**
  * Keeps track of the current owner.
  *
- * The current owner is the component who should own any components that are
+ * The current owner is the components who should own any components that are
  * currently being constructed.
  */
 var ReactCurrentOwner = {
@@ -617,7 +617,7 @@ function defineKeyPropWarningGetter(props, displayName) {
   var warnAboutAccessingKey = function () {
     if (!specialPropKeyWarningShown) {
       specialPropKeyWarningShown = true;
-      warning$3(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
+      warning$3(false, '%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child components, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
     }
   };
   warnAboutAccessingKey.isReactWarning = true;
@@ -631,7 +631,7 @@ function defineRefPropWarningGetter(props, displayName) {
   var warnAboutAccessingRef = function () {
     if (!specialPropRefWarningShown) {
       specialPropRefWarningShown = true;
-      warning$3(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
+      warning$3(false, '%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child components, you should pass it as a different ' + 'prop. (https://fb.me/react-special-props)', displayName);
     }
   };
   warnAboutAccessingRef.isReactWarning = true;
@@ -672,7 +672,7 @@ var ReactElement = function (type, key, ref, self, source, owner, props) {
     ref: ref,
     props: props,
 
-    // Record the component responsible for creating this element.
+    // Record the components responsible for creating this element.
     _owner: owner
   };
 
@@ -884,7 +884,7 @@ ReactElement.cloneElement = function (element, config, children) {
  * Verifies the object is a ReactElement.
  * See https://facebook.github.io/react/docs/react-api.html#isvalidelement
  * @param {?object} object
- * @return {boolean} True if `object` is a valid component.
+ * @return {boolean} True if `object` is a valid components.
  * @final
  */
 ReactElement.isValidElement = function (object) {
@@ -1095,9 +1095,9 @@ function traverseAllChildren(children, callback, traverseContext) {
 }
 
 /**
- * Generate a key string that identifies a component within a set.
+ * Generate a key string that identifies a components within a set.
  *
- * @param {*} component A component that could contain a manual key.
+ * @param {*} component A components that could contain a manual key.
  * @param {number} index Index that is used if a manual key is not provided.
  * @return {string}
  */
@@ -1284,8 +1284,8 @@ var ReactPropTypesSecret_1 = ReactPropTypesSecret$1;
  * @param {object} typeSpecs Map of name to a ReactPropType
  * @param {object} values Runtime values that need to be type-checked
  * @param {string} location e.g. "prop", "context", "child context"
- * @param {string} componentName Name of the component for error messages.
- * @param {?Function} getStack Returns the component stack.
+ * @param {string} componentName Name of the components for error messages.
+ * @param {?Function} getStack Returns the components stack.
  * @private
  */
 function checkPropTypes$1(typeSpecs, values, location, componentName, getStack) {
@@ -1472,7 +1472,7 @@ function validateExplicitKey(element, parentType) {
   // assigning it a key.
   var childOwner = '';
   if (element && element._owner && element._owner !== ReactCurrentOwner_1.current) {
-    // Give the component that originally created this child.
+    // Give the components that originally created this child.
     childOwner = ' It was passed a child from ' + getComponentName(element._owner) + '.';
   }
 
@@ -1558,7 +1558,7 @@ var ReactElementValidator$1 = {
     if (!validType) {
       var info = '';
       if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
-        info += ' You likely forgot to export your component from the file ' + "it's defined in.";
+        info += ' You likely forgot to export your components from the file ' + "it's defined in.";
       }
 
       var sourceInfo = getSourceInfoErrorAddendum(props);
