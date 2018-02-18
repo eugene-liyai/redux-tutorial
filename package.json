@@ -8,8 +8,8 @@
     "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Jamis Charles",
-  "license": "ISC",
+  "author": "Eugene Liyai",
+  "license": "MIT",
   "devDependencies": {
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
