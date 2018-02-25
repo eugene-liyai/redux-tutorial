@@ -18,6 +18,7 @@ Just a quick review of how classes are implemented using ES6. However, it is imp
 
 ##### To run entire app
 - run `npm intall --save-dev` on your command line
+- execute `npm start` to run app
 - check port the application in running on
 
 ### Redux
