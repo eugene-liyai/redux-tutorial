@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import store from './store/configureStore';
-import Conversion from './components/conversion.js';
+import Conversion from './container/conversion.js';
 
 class MainComponent extends React.Component {
     render() {
