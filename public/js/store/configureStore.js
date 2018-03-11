@@ -6,6 +6,8 @@ let defaultState = {
   originAmount: '0.00',
   destinationAmount: '0.00',
   conversionRate: 1.5,
+  feeAmount: 0.00,
+  totalCost: 0.00,
 };
 
 // dispatch() then( reducer( amount(state, action) ))
@@ -20,9 +22,19 @@ function amount(state = defaultState, action) {
         return {
             ...state,
             conversionRate: action.data.xRate,
-            destinationAmount: action.data.destAmount
+            destinationAmount: action.data.destAmount,
+        };
+    } else if (action.type === 'RECEIVED_FEES_SUCCESS') {
+        let newFeeAmount = action.data.feeAmount;
+        let newTotal = parseFloat(state.originAmount, 10) + parseFloat(newFeeAmount, 10);
+        return {
+            ...state,
+            feeAmount: newFeeAmount,
+            totalCost: newTotal,
         };
     }
+
+
     return state;
 }
 

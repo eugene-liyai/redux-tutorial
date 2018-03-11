@@ -115,36 +115,13 @@ class Conversion extends React.Component {
 
       this.props.dispatch(actions.fetchConversionRate(payload));
 
-      // this.props.dispatch((dispatch) => {
-      //
-      //     let payload = {
-      //       currentlyEditing: 'origin',
-      //       newValue: newAmount,
-      //     };
-      //     dispatch({type: 'REQUEST_CONVERSION_RATE', data: payload});
-      //
-      //     // get the new dest amount
-      //     this.makeConversionAjaxCall(payload, (resp) => {
-      //       this.clearErrorMessage();
-      //       dispatch({type: 'RECEIVED_CONVERSION_RATE', data: resp});
-      //
-      //     }, this.handleAjaxFailure);
-      // });
+      let feePayload = {
+        originAmount: newAmount,
+        originCurrency: this.state.originCurrency,
+        destCurrency: this.state.destinationCurrency
+      };
 
-        // get the new fee & total amount
-        this.makeFeeAjaxCall({
-            originAmount: newAmount,
-            originCurrency: this.state.originCurrency,
-            destCurrency: this.state.destinationCurrency
-
-        }, (resp) => {
-            this.setState({
-                feeAmount: resp.feeAmount
-            })
-
-            this.calcNewTotal();
-        });
-
+      this.props.dispatch(actions.fetchFees(feePayload));
 
     }
     handleDestAmountChange(event) {
@@ -257,8 +234,8 @@ class Conversion extends React.Component {
                     originCurrency={this.state.originCurrency}
                     destinationCurrency={this.state.destinationCurrency}
                     conversionRate={this.props.conversionRate}
-                    fee={this.state.feeAmount}
-                    total={this.state.totalCost}
+                    fee={this.props.feeAmount}
+                    total={this.props.totalCost}
                 />
             </div>
         )
@@ -270,5 +247,7 @@ export default connect((state, props) =>  {
     originAmount: state.originAmount,
     destinationAmount: state.destinationAmount,
     conversionRate: state.conversionRate,
+    feeAmount: state.feeAmount,
+    totalCost: state.totalCost,
   }
 })(Conversion);

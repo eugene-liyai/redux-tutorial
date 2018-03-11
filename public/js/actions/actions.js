@@ -10,11 +10,11 @@ export function changeOriginAmount(newAmount) {
 
 export function fetchConversionRate(payload) {
   return (dispatch) => {
-    makeConvertionAjaxCall(payload, dispatch);
+    makeConversionAjaxCall(payload, dispatch);
   };
 }
 
-function _makeConvertionAjaxCall(payload, dispatch) {
+function _makeConversionAjaxCall(payload, dispatch) {
   dispatch({type: 'REQUEST_CONVERSION_RATE', data: payload});
 
   // ajax call for destination amount
@@ -30,4 +30,27 @@ function _makeConvertionAjaxCall(payload, dispatch) {
   });
 }
 
-let makeConvertionAjaxCall = debounce(_makeConvertionAjaxCall, 300);
+let makeConversionAjaxCall = debounce(_makeConversionAjaxCall, 300);
+
+export function fetchFees(payload) {
+  return (dispatch) => {
+    makeFeeAjaxCall(payload, dispatch);
+  };
+}
+
+function _makeFeeAjaxCall(payload, dispatch) {
+  dispatch({type: 'REQUEST_FEES', data: payload});
+
+  // ajax call for destination amount
+  axios.get('/api/fees', {
+      params: payload
+  })
+  .then((resp) => {
+    dispatch({type: 'RECEIVED_FEES_SUCCESS', data: resp.data});
+  })
+  .catch((err) => {
+    dispatch({type: 'RECEIVED_FEES_FAILURE', data: err});
+  });
+}
+
+let makeFeeAjaxCall = debounce(_makeFeeAjaxCall, 300);
