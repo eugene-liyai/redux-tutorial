@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 let defaultState = {
   originAmount: '0.00',
   destinationAmount: '0.00',
-  conversionRate: '1.5',
+  conversionRate: 1.5,
 };
 
 // dispatch() then( reducer( amount(state, action) ))
