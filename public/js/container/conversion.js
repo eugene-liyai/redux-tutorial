@@ -4,6 +4,7 @@ import axios from 'axios';
 import debounce from 'lodash.debounce';
 
 import FeesTable from '../components/FeesTable';
+import * as actions from '../actions/actions';
 
 
 class Conversion extends React.Component {
@@ -97,13 +98,13 @@ class Conversion extends React.Component {
 
     }
     handleOriginAmountChange(event) {
-        let newAmount = event.target.value;
+      let newAmount = event.target.value;
 
-        // remove unallowed chars
-        newAmount = newAmount.replace(',','')
+      // remove unallowed chars
+      newAmount = newAmount.replace(',','')
 
-        // optimistic field updates
-        this.props.dispatch({type: 'CHANGE_ORIGIN_AMOUNT', data: newAmount });
+      // optimistic field updates
+      this.props.dispatch(actions.changeOriginAmount(newAmount));
 
       this.props.dispatch((dispatch) => {
 
