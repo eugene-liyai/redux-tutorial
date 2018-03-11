@@ -115,7 +115,7 @@ class Conversion extends React.Component {
         //     }, 3000);
         // });
 
-      this.dispatch((dispatch) => {
+      this.props.dispatch((dispatch) => {
 
           let payload = {
             currentlyEditing: 'origin',
@@ -126,6 +126,8 @@ class Conversion extends React.Component {
           // get the new dest amount
           this.makeConversionAjaxCall(payload, (resp) => {
             this.clearErrorMessage();
+
+            dispatch({type: 'RECEIVED_CONVERTION_RATE', data: resp});
 
             this.setState({
                 conversionRate: resp.xRate,
