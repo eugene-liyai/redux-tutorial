@@ -16,7 +16,7 @@ function amount(state = defaultState, action) {
           originAmount: action.data,
         };
         // return Object.assign({}, state, {originAmount: action.data});
-    } else if (action.type === 'RECEIVED_CONVERSION_RATE') {
+    } else if (action.type === 'RECEIVED_CONVERSION_RATE_SUCCESS') {
         return {
             ...state,
             conversionRate: action.data.xRate,

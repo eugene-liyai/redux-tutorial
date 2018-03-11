@@ -106,21 +106,30 @@ class Conversion extends React.Component {
       // optimistic field updates
       this.props.dispatch(actions.changeOriginAmount(newAmount));
 
-      this.props.dispatch((dispatch) => {
+      let payload = {
+        originAmount: newAmount,
+        originCurrency: this.state.originCurrency,
+        destCurrency: this.state.destinationCurrency,
+        calcOriginAmount: false
+      };
 
-          let payload = {
-            currentlyEditing: 'origin',
-            newValue: newAmount,
-          };
-          dispatch({type: 'REQUEST_CONVERSION_RATE', data: payload});
+      this.props.dispatch(actions.fetchConversionRate(payload));
 
-          // get the new dest amount
-          this.makeConversionAjaxCall(payload, (resp) => {
-            this.clearErrorMessage();
-            dispatch({type: 'RECEIVED_CONVERSION_RATE', data: resp});
-
-          }, this.handleAjaxFailure);
-      });
+      // this.props.dispatch((dispatch) => {
+      //
+      //     let payload = {
+      //       currentlyEditing: 'origin',
+      //       newValue: newAmount,
+      //     };
+      //     dispatch({type: 'REQUEST_CONVERSION_RATE', data: payload});
+      //
+      //     // get the new dest amount
+      //     this.makeConversionAjaxCall(payload, (resp) => {
+      //       this.clearErrorMessage();
+      //       dispatch({type: 'RECEIVED_CONVERSION_RATE', data: resp});
+      //
+      //     }, this.handleAjaxFailure);
+      // });
 
         // get the new fee & total amount
         this.makeFeeAjaxCall({
