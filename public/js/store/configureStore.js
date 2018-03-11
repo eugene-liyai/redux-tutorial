@@ -1,10 +1,12 @@
 import { applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
+import thunk from 'redux-thunk';
 
-var defaultState = {
+let defaultState = {
     originAmount: '0.00',
 };
 
+// dispatch() then( reducer( amount(state, action) ))
 function amount(state = defaultState, action) {
     if (action.type === 'CHANGE_ORIGIN_AMOUNT') {
         return {
@@ -16,6 +18,10 @@ function amount(state = defaultState, action) {
     return state;
 }
 
-var store = createStore(amount, applyMiddleware(logger));
+let logger = createLogger({
+  collapsed: true,
+});
+
+let store = createStore(amount, applyMiddleware(thunk, logger));
 
 export default store;
