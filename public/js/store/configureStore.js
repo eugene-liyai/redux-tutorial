@@ -12,30 +12,29 @@ let defaultState = {
 
 // dispatch() then( reducer( amount(state, action) ))
 function amount(state = defaultState, action) {
-    if (action.type === 'CHANGE_ORIGIN_AMOUNT') {
-        return {
+  switch (action.type) {
+    case ('CHANGE_ORIGIN_AMOUNT'):
+      return {
+        ...state,
+        originAmount: action.data,
+      };
+    case ('RECEIVED_CONVERSION_RATE_SUCCESS'):
+      return {
+        ...state,
+        conversionRate: action.data.xRate,
+        destinationAmount: action.data.destAmount,
+      };
+    case ('RECEIVED_FEES_SUCCESS'):
+      let newFeeAmount = action.data.feeAmount;
+      let newTotal = parseFloat(state.originAmount, 10) + parseFloat(newFeeAmount, 10);
+      return {
           ...state,
-          originAmount: action.data,
-        };
-        // return Object.assign({}, state, {originAmount: action.data});
-    } else if (action.type === 'RECEIVED_CONVERSION_RATE_SUCCESS') {
-        return {
-            ...state,
-            conversionRate: action.data.xRate,
-            destinationAmount: action.data.destAmount,
-        };
-    } else if (action.type === 'RECEIVED_FEES_SUCCESS') {
-        let newFeeAmount = action.data.feeAmount;
-        let newTotal = parseFloat(state.originAmount, 10) + parseFloat(newFeeAmount, 10);
-        return {
-            ...state,
-            feeAmount: newFeeAmount,
-            totalCost: newTotal,
-        };
-    }
-
-
-    return state;
+          feeAmount: newFeeAmount,
+          totalCost: newTotal,
+      };
+    default:
+      return state;
+  }
 }
 
 let logger = createLogger({
